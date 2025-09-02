@@ -3,11 +3,13 @@ package com.aditya.ecommerce.controller;
 
 import com.aditya.ecommerce.config.JWTProvider;
 import com.aditya.ecommerce.exception.UserException;
+import com.aditya.ecommerce.model.Cart;
 import com.aditya.ecommerce.model.User;
 import com.aditya.ecommerce.repository.UserRepository;
 import com.aditya.ecommerce.request.LoginRequest;
 import com.aditya.ecommerce.response.AuthResponse;
 
+import com.aditya.ecommerce.service.CartService;
 import com.aditya.ecommerce.service.CustomeUserServiceImplementation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -34,12 +36,14 @@ public class AuthController {
 
     private PasswordEncoder passwordEncoder;
     private CustomeUserServiceImplementation customeUserService;
+    private CartService cartService;
 
-    public AuthController(UserRepository  userRepository, CustomeUserServiceImplementation customeUserService, PasswordEncoder passwordEncoder,JWTProvider jwtProvider) {
+    public AuthController(UserRepository  userRepository, CustomeUserServiceImplementation customeUserService, PasswordEncoder passwordEncoder,JWTProvider jwtProvider, CartService cartService) {
         this.userRepository = userRepository;
         this.customeUserService = customeUserService;
         this.passwordEncoder = passwordEncoder;
         this.jwtProvider = jwtProvider;
+        this.cartService = cartService;
     }
 
 
@@ -66,6 +70,8 @@ public class AuthController {
         createdUser.setLastName(lastName);
 
         User savedUser = userRepository.save(createdUser);
+
+        Cart cart = cartService.createCart(savedUser);
 
         Authentication authentication= new UsernamePasswordAuthenticationToken(savedUser.getEmail(), savedUser.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
