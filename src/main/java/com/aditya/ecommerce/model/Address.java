@@ -39,4 +39,7 @@ public class Address {
     @JsonIgnore
     private User user;
 
+    @Column( name="phoneNumber")
+    private String phoneNumber;
+
 }
