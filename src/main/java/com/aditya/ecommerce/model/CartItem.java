@@ -19,7 +19,6 @@ public class CartItem {
     private Cart cart;
 
     @ManyToOne
-
     private Product product;
 
     private String size;

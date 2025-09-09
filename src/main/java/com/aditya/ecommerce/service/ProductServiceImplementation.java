@@ -21,9 +21,9 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImplementation implements ProductService{
 
-    private ProductRepository productRepository;
-    private UserService userService;
-    private CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final UserService userService;
+    private final CategoryRepository categoryRepository;
 
     public ProductServiceImplementation(ProductRepository productRepository,UserService userService,CategoryRepository categoryRepository){
         this.productRepository = productRepository;
