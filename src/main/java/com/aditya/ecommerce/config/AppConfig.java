@@ -34,7 +34,7 @@ public class AppConfig {
                                 "http://localhost:3000",
                                 "http://localhost:4200" ,
                                 "https://apnaeasymart.vercel.app",
-                                "https://ecommerce-backend-production-54bb.up.railway.app/"
+                                "https://ecommerce-backend-production-54bb.up.railway.app"
 
                         ));
                         cfg.setAllowedMethods(Collections.singletonList("*"));
