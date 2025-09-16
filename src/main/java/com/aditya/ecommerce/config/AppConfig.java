@@ -33,7 +33,7 @@ public class AppConfig {
                         cfg.setAllowedOrigins(Arrays.asList(
                                 "http://localhost:3000",
                                 "http://localhost:4200" ,
-                                "https://apnaeasymart.vercel.app",
+                                "https://e-commerce-frontened.vercel.app/",
                                 "https://ecommerce-backend-production-884d.up.railway.app"
 
                         ));
